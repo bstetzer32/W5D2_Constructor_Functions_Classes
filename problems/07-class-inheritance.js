@@ -59,7 +59,12 @@ class Message {
   }
 }
 
-class Email {}
+class Email extends Message {
+  constructor(recipient, sender, subject, text) {
+    super(recipient, sender, text);
+    this.subject = subject;
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
