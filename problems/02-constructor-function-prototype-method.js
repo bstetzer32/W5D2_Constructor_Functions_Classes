@@ -1,6 +1,5 @@
 
 /***********************************************************************
-
 Let's create a constructor function to represent email messages that contains a
 shared method!
 
@@ -21,10 +20,22 @@ In addition to Mocha, we recommend that you test your code manually using
 Node.js with the examples below. Use the command:
 
 `node problems/02-constructor-function-prototype-method.js`
+***********************************************************************/
+// Examples:
+function Email(recipient, sender, subject, text){
 
-Examples:
+  this.recipient =recipient;
+  this.sender = sender;
+  this.subject = subject;
+  this.text = text;
 
-const message1 = new Email('sally@smith.com', 'john@smith.com', 
+}
+
+Email.prototype.getSubjectAndText = function(){
+  return `${this.subject}: ${this.text}`
+}
+
+const message1 = new Email('sally@smith.com', 'john@smith.com',
   'Test Message One', 'This is a test message.');
 console.log(message1);
 console.log(message1.getSubjectAndText());
@@ -39,7 +50,7 @@ console.log(message1.getSubjectAndText());
 // }
 // Test Message One: This is a test message.
 
-const message2 = new Email('sally@smith.com', 'john@smith.com', 
+const message2 = new Email('sally@smith.com', 'john@smith.com',
   'Test Message Two', 'This is a test message.');
 console.log(message2);
 console.log(message2.getSubjectAndText());
@@ -53,11 +64,6 @@ console.log(message2.getSubjectAndText());
 //   text: 'This is a test message.'
 // }
 // Test Message Two: This is a test message.
-
-***********************************************************************/
-
-
-
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = Email;
