@@ -60,6 +60,12 @@ class MMS {
     this.text = text;
     this.mimeType = mimeType;
   }
+
+  static getMessagesByMIMEType(messages, mimeType) {
+    let theMime = messages.filter((ele) => {
+      return Object.values(ele).includes(mimeType)})
+    return theMime;
+  }
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
