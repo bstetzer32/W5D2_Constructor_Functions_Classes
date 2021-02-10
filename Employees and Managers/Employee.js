@@ -5,6 +5,9 @@ class Employee{
         this.salary = salary;
         this.boss = boss;
     }
+    bonus(multiplier){
+       return this.salary * multiplier
+    }
 }
 
 exports.Employee = Employee;

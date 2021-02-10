@@ -7,22 +7,25 @@ class Manager extends Employee {
     }
     totalSubsalary(){
         let subsalary = 0;
-        employees.reduce((accum, ele) => {
-            Employee.(ele.toLowercase())
+        this.employees.forEach((ele) => {
+           subsalary += ele.salary;
+           if(ele.employees){
+             subsalary +=  this.totalSubsalary(ele.employees);
+           }
         })
-        
+        return subsalary;
     }
     // bonus(multiplier){
 
     // }
 }
-const hobbes = new Manager("Hobbes", 1000000, "Founder", null, ["Calvin"]);
-const calvin = new Manager("Calvin", 130000, "Director", "Hobbes", ["Susie"]);
-const susie = new Manager("Susie", 100000, "TA Manager", "Calvin", ["Lily", "Clifford"]);
 const lily = new Employee("Lily", 90000, "TA", "Susie");
 const clifford = new Employee("Clifford", 90000, "TA", "Susie");
+const susie = new Manager("Susie", 100000, "TA Manager", "Calvin", [lily, clifford]);
+const calvin = new Manager("Calvin", 130000, "Director", "Hobbes", [susie]);
+const hobbes = new Manager("Hobbes", 1000000, "Founder", null, [calvin]);
 
-console.log(Employee)
+console.log(hobbes.totalSubsalary())
 
 
 // Name	    Salary	Title	    Boss
